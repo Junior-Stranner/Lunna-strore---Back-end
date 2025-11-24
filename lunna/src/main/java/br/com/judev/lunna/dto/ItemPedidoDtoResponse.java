@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemPedidoResponse {
+public class ItemPedidoDtoResponse {
 
     private Long id;
     private int quantidade;

@@ -21,5 +21,5 @@ public class UsuarioDtoResponse {
 
     private EnderecoDtoResponse endereco;
 
-    private List<ItemPedidoResponse> itens;
+    private List<ItemPedidoDtoResponse> itens;
 }

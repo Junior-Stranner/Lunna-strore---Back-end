@@ -1,9 +1,8 @@
 package br.com.judev.lunna.mapper;
 
-import br.com.judev.lunna.dto.UsuarioDtoRequest;
-import br.com.judev.lunna.dto.UsuarioDtoResponse;
-import br.com.judev.lunna.entity.Usuario;
-import org.apache.catalina.User;
+import br.com.judev.lunna.dto.EnderecoDtoRequest;
+import br.com.judev.lunna.dto.EnderecoDtoResponse;
+import br.com.judev.lunna.entity.Endereco;
 import org.modelmapper.ModelMapper;
 
 import java.util.List;
@@ -13,17 +12,17 @@ public class EnderecoMapper {
 
     private static final ModelMapper mapper = new ModelMapper();
 
-    public static Usuario toEntity(UsuarioDtoRequest dto) {
-        return mapper.map(dto, Usuario.class);
+    public static Endereco toEntity(EnderecoDtoRequest dto) {
+        return mapper.map(dto, Endereco.class);
     }
 
-    public static UsuarioDtoResponse toDto(User entity) {
-        return mapper.map(entity, UsuarioDtoResponse.class);
+    public static EnderecoDtoResponse toDto(Endereco entity) {
+        return mapper.map(entity, EnderecoDtoResponse.class);
     }
 
-    public static List<UsuarioDtoResponse> toDtoList(List<User> users) {
-        return users.stream()
-                .map(UsuarioMapper::toDto)
+    public static List<EnderecoDtoResponse> toDtoList(List<Endereco> enderecos) {
+        return enderecos.stream()
+                .map(EnderecoMapper::toDto)
                 .collect(Collectors.toList());
     }
 }
