@@ -21,6 +21,5 @@ public class ProdutoDtoResponse {
     private BigDecimal preco;
     private String imageUrl;
 
-    // Categoria simplificada no response
     private CategoriaDtoResponse categoria;
 }
