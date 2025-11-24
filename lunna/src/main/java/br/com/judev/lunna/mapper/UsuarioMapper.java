@@ -18,12 +18,12 @@ public class UsuarioMapper {
         return mapper.map(dto, Usuario.class);
     }
 
-    public static UsuarioDtoResponse toDto(User entity) {
+    public static UsuarioDtoResponse toDto(Usuario entity) {
         return mapper.map(entity, UsuarioDtoResponse.class);
     }
 
-    public static List<UsuarioDtoResponse> toDtoList(List<User> users) {
-        return users.stream()
+    public static List<UsuarioDtoResponse> toDtoList(List<Usuario> usuarios) {
+        return usuarios.stream()
                 .map(UsuarioMapper::toDto)
                 .collect(Collectors.toList());
     }

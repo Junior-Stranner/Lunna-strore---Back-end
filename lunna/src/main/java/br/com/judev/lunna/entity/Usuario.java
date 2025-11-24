@@ -3,11 +3,13 @@ package br.com.judev.lunna.entity;
 import br.com.judev.lunna.enums.UserRole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+@Data
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
