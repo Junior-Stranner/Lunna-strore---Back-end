@@ -24,7 +24,6 @@ public class ProdutoService {
         this.categoriaRepository = categoriaRepository;
     }
 
-    @Override
     public ProdutoDtoResponse criarProduto(Long categoriaId, MultipartFile imagem, ProdutoDtoRequest dto) {
 
         Categoria categoria = categoriaRepository.findById(Math.toIntExact(categoriaId))
@@ -36,8 +35,8 @@ public class ProdutoService {
         if (imagem != null && !imagem.isEmpty()) {
             produto.setImagemUrl("temp");
         }
-        produtoRepository.save(produto);
-        return ProdutoMapper.toDto(produto);
+        Produto produtoSalvo = produtoRepository.save(produto);
+        return ProdutoMapper.toDto(produtoSalvo);
     }
 
 
@@ -57,7 +56,6 @@ public class ProdutoService {
         if (dto.getDescricao() != null) produto.setDescricao(dto.getDescricao());
         if (dto.getPreco() != null) produto.setPreco(dto.getPreco());
 
-        // Atualizar imagem caso enviada
         if (imagem != null && !imagem.isEmpty()) {
             // TODO: upload real futuramente
             produto.setImagemUrl("nova_url_temporaria");
@@ -83,7 +81,6 @@ public class ProdutoService {
         return ProdutoMapper.toDto(produto);
     }
 
-    @Override
     public List<ProdutoDtoResponse> buscarTodos() {
         List<Produto> produtos = produtoRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
 
