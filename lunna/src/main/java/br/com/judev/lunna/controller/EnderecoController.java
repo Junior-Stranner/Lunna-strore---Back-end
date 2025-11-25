@@ -14,7 +14,7 @@ public class EnderecoController {
 
     private final EnderecoService enderecoService;
 
-    @PostMapping("/{usuarioId}")
+    @PostMapping("/usuario/{usuarioId}")
     public ResponseEntity<EnderecoDtoResponse> salvarOuAtualizar(
             @PathVariable Long usuarioId,
             @RequestBody EnderecoDtoRequest dto) {
