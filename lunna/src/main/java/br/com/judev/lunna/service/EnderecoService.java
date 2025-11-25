@@ -24,7 +24,7 @@ public class EnderecoService {
         Usuario usuario = usuarioRepository.findById(Math.toIntExact(usuarioId))
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado"));
 
-        Endereco endereco = (Endereco) usuario.getEnderecos();
+        Endereco endereco = usuario.getEndereco();
 
         if (endereco == null) {
             endereco = new Endereco();

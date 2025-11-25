@@ -38,8 +38,8 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Pedido> pedidos;
 
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Endereco> enderecos;
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Endereco endereco;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();

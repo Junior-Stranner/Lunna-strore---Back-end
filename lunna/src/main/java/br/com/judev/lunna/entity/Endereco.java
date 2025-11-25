@@ -21,7 +21,7 @@ public class Endereco {
     private String cep;
     private String pais;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
