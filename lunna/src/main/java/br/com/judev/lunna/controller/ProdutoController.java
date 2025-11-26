@@ -4,6 +4,7 @@ import br.com.judev.lunna.dto.ProdutoDtoRequest;
 import br.com.judev.lunna.dto.ProdutoDtoResponse;
 import br.com.judev.lunna.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,15 +18,23 @@ public class ProdutoController {
 
     private final ProdutoService produtoService;
 
-    @PostMapping("/categoria/{categoriaId}")
+    @PostMapping(
+            value = "/categoria/{categoriaId}",
+            consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE }
+    )
     public ResponseEntity<ProdutoDtoResponse> criarProduto(
             @PathVariable Long categoriaId,
             @RequestPart(value = "imagem", required = false) MultipartFile imagem,
-            @RequestPart("dados") ProdutoDtoRequest dto) {
+            @RequestPart(value = "dados", required = false) ProdutoDtoRequest dtoMultipart,
+            @RequestBody(required = false) ProdutoDtoRequest dtoJson
+    ) {
 
-        ProdutoDtoResponse response = produtoService.criarProduto(categoriaId, imagem, dto);
+        ProdutoDtoRequest dados = dtoMultipart != null ? dtoMultipart : dtoJson;
+
+        ProdutoDtoResponse response = produtoService.criarProduto(categoriaId, imagem, dados);
         return ResponseEntity.ok(response);
     }
+
 
     @PutMapping("/{produtoId}")
     public ResponseEntity<ProdutoDtoResponse> atualizarProduto(

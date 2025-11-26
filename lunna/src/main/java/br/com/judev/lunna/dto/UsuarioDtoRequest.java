@@ -20,6 +20,6 @@ public class UsuarioDtoRequest {
     private String senha;
     private String role;
 
-    private EnderecoDtoRequest endereco;
+ //   private EnderecoDtoRequest endereco;
 }
 

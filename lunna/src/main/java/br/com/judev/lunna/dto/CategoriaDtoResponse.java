@@ -14,5 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CategoriaDtoResponse {
-    private String  nome;
+    private Long id;
+    private String nome;
     private List<ProdutoDtoResponse> produtoLista;}

@@ -31,10 +31,12 @@ public class UsuarioService {
         }
 
         Usuario usuario = new Usuario();
-        usuario.setNome(usuarioDtoRequest.getNome());
+
         usuario.setEmail(usuarioDtoRequest.getEmail());
+        usuario.setNome(usuarioDtoRequest.getNome());
+        usuario.setPhoneNumber(usuarioDtoRequest.getPhoneNumber());
         usuario.setSenha(usuarioDtoRequest.getSenha());
-        usuario.setRole(role);
+        usuario.setRole(UserRole.valueOf(usuarioDtoRequest.getRole()));
 
         Usuario usuarioSalvo = usuarioRepository.save(usuario);
 
